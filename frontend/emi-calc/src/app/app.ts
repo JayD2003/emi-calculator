@@ -1,12 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { EmiCalculator } from './emi-calculator/emi-calculator';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [EmiCalculator],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class App {
-  protected readonly title = signal('emi-calc');
 }

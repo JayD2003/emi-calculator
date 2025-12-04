@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>EMI Calculator</h2>
+
+  <form [formGroup]="emiForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>Loan Amount</label>
+      <input type="number" formControlName="principal" placeholder="Enter loan amount" step="0.01" min="1">
+      <small *ngIf="emiForm.controls.principal.invalid && emiForm.controls.principal.touched">
+        Enter a valid principal amount (≥ 1).
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Interest Rate (%)</label>
+      <input type="number" formControlName="annualInterestRate" placeholder="Annual interest rate" step="0.01" min="0.1" max="100">
+      <small *ngIf="emiForm.controls.annualInterestRate.invalid && emiForm.controls.annualInterestRate.touched">
+        Enter a valid interest rate (0.1 - 100%).
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Loan Term (years)</label>
+      <input type="number" formControlName="loanTermYears" placeholder="Loan term in years" step="0.01" min="0.1" max="30">
+      <small *ngIf="emiForm.controls.loanTermYears.invalid && emiForm.controls.loanTermYears.touched">
+        Enter a valid loan term (0.1 - 30.0 years).
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="emiForm.invalid">Calculate EMI</button>
+  </form>
+
+  <div *ngIf="response()" class="result-box">
+    <h3>Results</h3>
+    <p><strong>EMI:</strong> {{ response().emiAmount }}</p>
+    <p><strong>Total Interest:</strong> {{ response().totalInterest }}</p>
+    <p><strong>Total Payment:</strong> {{ response().totalPayment }}</p>
+  </div>
+
+  <div *ngIf="error()" class="error-message">
+    {{ error() }}
+  </div>
+</div>
