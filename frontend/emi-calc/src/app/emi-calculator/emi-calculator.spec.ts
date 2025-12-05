@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmiCalulator } from './emi-calculator';
+import { EmiCalculator } from './emi-calculator';
 
 describe('EmiCalculator', () => {
   let component: EmiCalculator;
